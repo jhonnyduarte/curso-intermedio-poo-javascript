@@ -13,10 +13,34 @@ const Jhon = {
 console.log(Object.getOwnPropertyNames(Jhon));
 console.log(Object.entries(Jhon)); */
 
-console.log(Object.getOwnPropertyDescriptors(Jhon));
 
-Object.defineProperty(Jhon, 'pruebaNASA', {
-    value: 'extraterrestre',
-    enumerable: true,
-    writable: true
+
+/* Object.defineProperty(Jhon, 'navigator', {
+    value: 'Chrome',
+    enumerable: false,
+    writable: true,
+    configurable: true,
 });
+Object.defineProperty(Jhon, 'editor', {
+    value: 'VSCode',
+    enumerable: true,
+    writable: false,
+    configurable: true,
+});
+Object.defineProperty(Jhon, 'terminal', {
+    value: 'WSL',
+    enumerable: true,
+    writable: true,
+    configurable: false,
+});
+Object.defineProperty(Jhon, 'pruebaNasa', {
+    value: 'alien',
+    enumerable: false,
+    writable: false,
+    configurable: false,
+}); */
+
+Object.seal(Jhon);//configurable : false
+Object.freeze(Jhon);// configurable:false writable:false
+
+console.log(Object.getOwnPropertyDescriptors(Jhon));
