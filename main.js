@@ -1,68 +1,78 @@
-const Jhon = {
-    name : 'Jhon',
-    age : 46,
+const jhon = {
+    name: 'Jhon',
+    age: 46,
     approvedCourses: ['Curso 1'],
-    addCourse(newCourse){
+    addCourse (newCourse){
         console.log('This',this);
         console.log('This.approvedCourses',this.approvedCourses);
         this.approvedCourses.push(newCourse);
     }
 }
 
-/* console.log(Object.keys(Jhon));
-console.log(Object.getOwnPropertyNames(Jhon));
-console.log(Object.entries(Jhon)); */
+//console.log(Object.keys(jhon)); 
+//console.log(Object.getOwnPropertyNames(jhon)); 
+//console.log(Object.entries(jhon)); 
 
 
 
-/* Object.defineProperty(Jhon, 'navigator', {
-    value: 'Chrome',
+Object.defineProperty(jhon, 'pruebaNasa',{
+    value: 'extraterrestre',
     enumerable: false,
-    writable: true,
-    configurable: true,
-});
-Object.defineProperty(Jhon, 'editor', {
-    value: 'VSCode',
-    enumerable: true,
     writable: false,
-    configurable: true,
-});
-Object.defineProperty(Jhon, 'terminal', {
+    configurable: false
+
+})
+Object.defineProperty(jhon, 'navigator',{
+    value: 'chorme',
+    enumerable: false,//no se ve,solo con PropertyNames,se puede modificar
+    writable: true,
+    configurable: true
+
+})
+Object.defineProperty(jhon, 'editor',{
+    value: 'VScode',
+    enumerable: true,
+    writable: false,//No permite editar pero si eliminarla
+    configurable: true
+
+})
+Object.defineProperty(jhon, 'terminal',{
     value: 'WSL',
     enumerable: true,
     writable: true,
-    configurable: false,
-});
-Object.defineProperty(Jhon, 'pruebaNasa', {
-    value: 'alien',
-    enumerable: false,
-    writable: false,
-    configurable: false,
-}); */
+    configurable: false// no permite Eliminar la propiedad
 
-Object.seal(Jhon);//configurable : false
-Object.freeze(Jhon);// configurable:false writable:false
+})
+console.log(Object.getOwnPropertyDescriptors(jhon));
 
-console.log(Object.getOwnPropertyDescriptors(Jhon));
-
-const obj1 = {
-    a: 'a',
-    b: 'b',
-    c: {
-        d: 'd',
-        e: 'e',
-    },
+// Para mejorar el encapsulamiento
+const jhon2 = {
+    name: 'JhonJairo',
+    age: 36,
+    approvedCourses: ['Curso 1'],
+    addCourse (newCourse){
+        console.log('This',this);
+        console.log('This.approvedCourses',this.approvedCourses);
+        this.approvedCourses.push(newCourse);
+    }
 }
 
-//const obj2 = {};
+Object.seal(jhon2);//Todas las propiedades tienen configurable como false
 
-/* for (prop in obj1) {
-    obj2[prop] = obj1[prop]
+
+console.log(Object.getOwnPropertyDescriptors(jhon2));
+
+const jhon3 = {
+    name: 'Jairo',
+    age: 26,
+    approvedCourses: ['Curso 1'],
+    addCourse (newCourse){
+        console.log('This',this);
+        console.log('This.approvedCourses',this.approvedCourses);
+        this.approvedCourses.push(newCourse);
+    }
 }
 
-const obj4 = Object.create(obj1); */
+Object.freeze(jhon3);// Imposibles de eliminar y sobreescribir las propiedades
 
-const stringifiedComplexObj = JSON.stringify(obj1);
-
-const obj2 = JSON.parse(stringifiedComplexObj);
-
+console.log(Object.getOwnPropertyDescriptors(jhon3));
